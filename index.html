@@ -11,6 +11,14 @@
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://asphalt-rus.ru/" />
     <meta name="theme-color" content="#17191c" />
+    <meta name="keywords" content="асфальтирование, укладка асфальта, асфальтирование дорог, асфальтирование территорий, ямочный ремонт, асфальтовая крошка, устройство оснований, бордюры, дорожная разметка, Москва, Московская область" />
+    <meta name="author" content="Асфальт-Рус" />
+    <meta name="geo.region" content="RU-MOW" />
+    <meta name="geo.placename" content="Москва" />
+    <meta name="geo.position" content="55.7558;37.6173" />
+    <meta name="ICBM" content="55.7558, 37.6173" />
+
+    <link rel="preload" as="image" href="/images/hero.jpg" fetchpriority="high" />
 
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="ru_RU" />
@@ -22,6 +30,14 @@
     />
     <meta property="og:url" content="https://asphalt-rus.ru/" />
     <meta property="og:image" content="https://asphalt-rus.ru/images/hero.jpg" />
+    <meta property="og:image:width" content="1672" />
+    <meta property="og:image:height" content="941" />
+    <meta property="og:image:alt" content="Асфальтирование дорог и территорий — Асфальт-Рус" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Асфальтирование дорог и территорий в Москве и МО — Асфальт-Рус" />
+    <meta name="twitter:description" content="Рассчитаем стоимость с учётом площади, основания, нагрузки и состава работ. Москва и Московская область." />
+    <meta name="twitter:image" content="https://asphalt-rus.ru/images/hero.jpg" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -38,15 +54,40 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "LocalBusiness",
+        "@type": "GeneralContractor",
+        "@id": "https://asphalt-rus.ru/#business",
         "name": "Асфальт-Рус",
         "description": "Асфальтирование дорог, парковок, дворов и промышленных территорий, ремонт асфальта, дорожные работы в Москве и Московской области.",
         "url": "https://asphalt-rus.ru/",
         "telephone": "+7 (926) 333-22-86",
         "email": "asphalt-rus@yandex.ru",
+        "image": "https://asphalt-rus.ru/images/hero.jpg",
+        "logo": "https://asphalt-rus.ru/images/logo.jpg",
+        "priceRange": "₽₽",
+        "currenciesAccepted": "RUB",
+        "paymentAccepted": "Наличные, безналичный расчёт",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Москва",
+          "addressRegion": "Московская область",
+          "addressCountry": "RU"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 55.7558,
+          "longitude": 37.6173
+        },
         "areaServed": [
           { "@type": "City", "name": "Москва" },
           { "@type": "State", "name": "Московская область" }
+        ],
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+            "opens": "08:00",
+            "closes": "20:00"
+          }
         ],
         "makesOffer": [
           { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Асфальтирование дорог" } },
