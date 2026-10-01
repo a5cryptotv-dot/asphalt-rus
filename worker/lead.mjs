@@ -111,9 +111,10 @@ async function parseRequest(request) {
 
 async function callTelegram(token, method, body) {
   const response = await fetch(`https://api.telegram.org/bot${token}/${method}`, { method: "POST", body });
-  if (!response.ok) throw new Error("Telegram request failed");
-  const result = await response.json();
-  if (!result.ok) throw new Error("Telegram request failed");
+  const result = await response.json().catch(() => ({}));
+  if (!response.ok || !result.ok) {
+    throw new Error(`${method}: ${response.status} ${result.description || "request failed"}`);
+  }
 }
 
 async function sendText(token, chatId, text) {
@@ -165,12 +166,14 @@ export default {
       const fileError = validateFiles(files);
       if (fileError) return jsonResponse({ ok: false, message: fileError }, 413, origin);
       const message = buildMessage(payload, files);
-      for (const chatId of chatIds) {
+      const deliveries = await Promise.allSettled(chatIds.map(async (chatId) => {
         await sendText(token, chatId, message);
         for (let index = 0; index < files.length; index += 1) {
           await sendFile(token, chatId, files[index], index);
         }
-      }
+      }));
+      const delivered = deliveries.filter((item) => item.status === "fulfilled").length;
+      if (!delivered) return jsonResponse({ ok: false, message: "Unable to process lead" }, 502, origin);
       return jsonResponse({ ok: true }, 200, origin);
     } catch {
       return jsonResponse({ ok: false, message: "Unable to process lead" }, 502, origin);
